@@ -16,7 +16,7 @@ public class Main1SimilarToJDBCMain3 {
 		
 		EntityManagerFactory emf = Persistence
 				.createEntityManagerFactory("personPersistenceUnit", 
-				Map.of("javax.persistence.jdbc.password", Passwords.AZURE_PASSWORD));
+				Map.of("javax.persistence.jdbc.password", new Passwords().getPassord()));
 
 		EntityManager em = emf.createEntityManager();
 		
