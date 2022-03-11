@@ -1,5 +1,6 @@
 package no.hvl.dat107;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -15,12 +16,12 @@ public class TodoDAO {
 	
 	/* --------------------------------------------------------------------- */
 
-	public String/*?*/ finnTodoMedPk(/*TODO*/) {
+	public Todo finnTodoMedPk(int id) {
 		
 		EntityManager em = emf.createEntityManager();
 
 		try {
-			return null; /*TODO*/
+			return em.find(Todo.class, id);
 
 		} finally {
 			em.close();
@@ -29,12 +30,12 @@ public class TodoDAO {
 
 	/* --------------------------------------------------------------------- */
 
-	public String/*?*/ finnAlleTodos(/*TODO*/) {
+	public String/*?*/ finnAlleTodos() {
 		
 		EntityManager em = emf.createEntityManager();
 		
 		try {
-			return null; /*TODO*/
+			return null; /*TODO* Bruke jpql Query*/
 		
 		} finally {
 			em.close();
@@ -43,7 +44,7 @@ public class TodoDAO {
 
 	/* --------------------------------------------------------------------- */
 
-	public String/*?*/  finnTodoMedTekst(/*TODO*/) {
+	public Todo  finnTodoMedTekst(/*TODO*/) {
 		EntityManager em = emf.createEntityManager();
 		
 		try {
@@ -56,7 +57,7 @@ public class TodoDAO {
 	
 	/* --------------------------------------------------------------------- */
 
-	public String/*?*/  finnTodosMedTekst(/*TODO*/) {
+	public List<Todo> finnTodosMedTekst(String tekst) {
 		EntityManager em = emf.createEntityManager();
 		
 		try {
@@ -69,17 +70,19 @@ public class TodoDAO {
 
 	/* --------------------------------------------------------------------- */
 
-	public void/*TODO*/ lagreNyTodo(/*TODO*/) {
+	public boolean lagreNyTodo(int id, String tekst) {
 		
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 
 		try {
 			tx.begin();
-			
-			/*TODO*/
+
+			Todo todo = new Todo(id, tekst);
+			em.persist(todo);
 			
 			tx.commit();
+			return true;
 
 		} catch (Throwable e) {
 			e.printStackTrace();
@@ -89,6 +92,7 @@ public class TodoDAO {
 		} finally {
 			em.close();
 		}
+		return false;
 	}
 
 	/* --------------------------------------------------------------------- */
