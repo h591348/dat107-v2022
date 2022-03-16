@@ -23,17 +23,24 @@ public class Main {
 
 		// a) Hente ut todo med pk=2
 		Todo todo1 = todoDAO.finnTodoMedPk(2);
-		System.out.println(todo1);
+//		System.out.println(todo1);
+		
 		// b) Hente ut alle todos 
 		// c.i)   Hente ut SINGLE todo med tekst="Handle mat" 
 		// c.ii)  Hente ut SINGLE todo med tekst="Vaske bilen" (som ikke finnes) 
 		// c.iii) Hente ut LISTE av todos med tekst="Handle mat" 
-		// c.iv)  Hente ut LISTE av todos med tekst="Vaske bilen" (som ikke finnes) 
+		// c.iv)  Hente ut LISTE av todos med tekst="Vaske bilen" (som ikke finnes)
+		
 		// d) Legge til en ny todo med pk=4
 //		todoDAO.lagreNyTodo("Støvsuge");
 //		todoDAO.lagreNyTodo(new Todo(4, "Støvsuge"));
-
-		// e) Slette todo med pk=4 
+//		todoDAO.lagreNyTodo(4, "Støvsuge");
+//		pauseOgSjekkDatabasen("Etter å ha lagt inn [4 Støvsuge]");
+		
+		
+		// e) Slette todo med pk=4
+		todoDAO.slettTodoMedPk(4);
+		
 		// f) Endre tekst på todo med pk=3
 		// g) Endre tekst på todo med pk=3, alternativ måte
 		
