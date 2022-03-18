@@ -2,9 +2,9 @@ package no.hvl.dat107;
 
 import java.util.List;
 
-public class Main3CompleteCrud {
+//public class Main3CompleteCrud {
 	
-	private static Databasehjelper dbhjelper = new Databasehjelper();
+	/*private static Databasehjelper dbhjelper = new Databasehjelper();
 	
 	public static void main(String[] args) {
 
@@ -16,7 +16,7 @@ public class Main3CompleteCrud {
 		 * 1002	'Atle Patle'
 		 * 1003	'Donald Duck'
 		 */
-		skrivUt("Utgangspunkt");
+		/*skrivUt("Utgangspunkt");
 		
 		//Create - Opprette ny(e) rad(er) i databasen
 		dbhjelper.createPerson(new Person(1004, "Mikke"));
@@ -45,4 +45,4 @@ public class Main3CompleteCrud {
 		personer.forEach(System.out::println);		
 	}
 
-}
+}*/

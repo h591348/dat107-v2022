@@ -12,9 +12,11 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
+		VitnemalDAO dao = new VitnemalDAO();
 		
 		//a) Søke opp vitnemålet til en gitt student.
-		/*TODO*/
+		Vitnemal vitnemal = dao.hentVitnemalForStudent(123456);
+		System.out.println(vitnemal);
 		
 		//b.i) Registrere en ny karakter for en gitt student 
 		//		når karakter ikke finnes fra før.
@@ -25,7 +27,8 @@ public class Main {
 		/*TODO*/
 		
 		//c) Søke opp karakteren til en gitt student i et gitt kurs.
-		/*TODO*/
+		Karakter dat100kar = dao.hentKarakterForStudentIEmne(123456, "DAT102");
+		System.out.println(dat100kar);
 		
 	}
 }

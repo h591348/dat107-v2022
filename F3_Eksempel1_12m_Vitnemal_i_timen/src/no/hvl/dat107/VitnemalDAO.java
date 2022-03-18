@@ -2,10 +2,7 @@ package no.hvl.dat107;
 
 import java.util.Map;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 public class VitnemalDAO {
 
@@ -13,16 +10,16 @@ public class VitnemalDAO {
 
     public VitnemalDAO() {
         emf = Persistence.createEntityManagerFactory("vitnemalPU",
-		Map.of("javax.persistence.jdbc.password", Passwords.AZURE_PASSWORD));
+		Map.of("javax.persistence.jdbc.password", new Passwords().getPassord()));
     }
     
     /* --------------------------------------------------------------------- */
 
-    public /*TODO*/void hentVitnemalForStudent(/*TODO*/) {
+    public Vitnemal hentVitnemalForStudent(int StudNr) {
         
         EntityManager em = emf.createEntityManager();
         try {
-        	/*TODO*/
+        	return em.find(Vitnemal.class, StudNr);
         } finally {
             em.close();
         }
@@ -30,13 +27,23 @@ public class VitnemalDAO {
 
     /* --------------------------------------------------------------------- */
 
-    public /*TODO*/void hentKarakterForStudentIEmne(/*TODO*/) {
+    public Karakter hentKarakterForStudentIEmne(int studNr, String emnekode) {
         
         EntityManager em = emf.createEntityManager();
         
         try {
+            String q = "SELECT k FROM Karakter AS k WHERE k.vitnemal.studNr = :snr AND k.emnekode = :ekode";
+            TypedQuery<Karakter> query = em.createQuery(q, Karakter.class);
+            query.setParameter("snr", studNr);
+            query.setParameter("ekode", emnekode);
+
+          return query.getSingleResult();
         	
-        } finally {
+        }
+        catch (NoResultException e){
+            return null;
+        }
+        finally {
             em.close();
         }
     }
